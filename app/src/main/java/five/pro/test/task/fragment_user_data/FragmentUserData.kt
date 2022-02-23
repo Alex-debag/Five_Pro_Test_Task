@@ -54,9 +54,3 @@ class FragmentUserData: Fragment() {
     }
 
 }
-
-
-
-fun main(){
-
-}
