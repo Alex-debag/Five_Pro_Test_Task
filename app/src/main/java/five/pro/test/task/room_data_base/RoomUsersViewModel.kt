@@ -1,10 +1,13 @@
 package five.pro.test.task.room_data_base
 
 import androidx.lifecycle.*
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RoomUsersViewModel( private val repository: UsersRepository ) : ViewModel() {
+@HiltViewModel
+class RoomUsersViewModel @Inject constructor( private val repository: UsersRepository ) : ViewModel() {
 
         val allUsers: LiveData<List<ModelDataUser>> = repository.allUsers.asLiveData()
 // add user on background thread

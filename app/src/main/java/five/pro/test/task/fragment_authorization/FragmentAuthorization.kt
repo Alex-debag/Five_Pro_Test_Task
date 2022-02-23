@@ -10,13 +10,12 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import five.pro.test.task.R
-import five.pro.test.task.ThisApplication
 import five.pro.test.task.extensions.addText
 import five.pro.test.task.extensions.getSharedPreferences
 import five.pro.test.task.room_data_base.RoomUsersViewModel
-import five.pro.test.task.room_data_base.WordViewModelFactory
-
+@AndroidEntryPoint
 class FragmentAuthorization : Fragment() {
 
 // text fields
@@ -28,9 +27,7 @@ class FragmentAuthorization : Fragment() {
     private lateinit var progressBar: ProgressBar
 // viewModels
     private val authorizationViewModel:AuthorizationViewModel by activityViewModels()
-    private val roomViewModel: RoomUsersViewModel by viewModels {
-        WordViewModelFactory((activity?.application as ThisApplication).repository)
-    }
+    private val roomViewModel: RoomUsersViewModel by viewModels()
 // shared
     private val shared get() = this.getSharedPreferences(SharedKey.SHARED.name)
     private val logPh get() = this.shared?.getString(SharedKey.LOG.name, "").toString()

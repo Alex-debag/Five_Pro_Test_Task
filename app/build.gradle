@@ -4,6 +4,7 @@ plugins {
     // added
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -37,6 +38,10 @@ android {
     }
 }
 
+//tasks.test {
+//    useJUnitPlatform()
+//}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -51,6 +56,14 @@ dependencies {
 
 // added
 
+// test
+    testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
+    testImplementation "org.mockito:mockito-core:4.0.0"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+// Hilt
+    implementation "com.google.dagger:hilt-android:2.39.1"
+    kapt "com.google.dagger:hilt-android-compiler:2.39.1"
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
 // Room components
     implementation "androidx.room:room-ktx:2.4.1"
     kapt "androidx.room:room-compiler:2.4.1"
@@ -77,3 +90,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
 
 }
+
+kapt {
+    correctErrorTypes = true
+}
+
+

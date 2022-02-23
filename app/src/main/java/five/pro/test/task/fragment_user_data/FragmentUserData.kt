@@ -9,12 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
+import dagger.hilt.android.AndroidEntryPoint
 import five.pro.test.task.R
-import five.pro.test.task.ThisApplication
 import five.pro.test.task.fragment_authorization.AuthorizationViewModel
 import five.pro.test.task.room_data_base.RoomUsersViewModel
-import five.pro.test.task.room_data_base.WordViewModelFactory
-
+@AndroidEntryPoint
 class FragmentUserData: Fragment() {
 
 // text fields
@@ -24,9 +23,10 @@ class FragmentUserData: Fragment() {
 // view models
     private val authorizationViewModel:AuthorizationViewModel  by activityViewModels()
     private val userDataViewModel by viewModels<UserDataViewModel>()
-    private val roomViewModel: RoomUsersViewModel by viewModels {
-        WordViewModelFactory((activity?.application as ThisApplication).repository)
-    }
+    private val roomViewModel: RoomUsersViewModel by viewModels()
+//    private val roomViewModel: RoomUsersViewModel by viewModels {
+//        WordViewModelFactory((activity?.application as ThisApplication).repository)
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,5 +52,11 @@ class FragmentUserData: Fragment() {
 
         return view
     }
+
+}
+
+
+
+fun main(){
 
 }
