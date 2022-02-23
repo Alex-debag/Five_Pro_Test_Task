@@ -32,8 +32,7 @@ class DataModule {
     fun getDao(usersDatabase: UsersDatabase): Dao{
         return usersDatabase.userDao()
     }
-    //    private val database by lazy { UsersDatabase.getDatabase(this) }
-//    val repository by lazy { UsersRepository(database.userDao()) }
+
 }
 
 @Module
